@@ -1,7 +1,7 @@
 {
   "name": "@weblineindia/rn-weblineindia-intro-slider",
   "title": "React Native Intro Slider",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A ReactNative component for introduction slider in your app.",
   "main": "index.js",
   "files": [
