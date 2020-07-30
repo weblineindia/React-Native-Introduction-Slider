@@ -1,9 +1,10 @@
-# React-Native-Introduction-Slider
+# React Native Introduction Slider Component
 
 A React Native based component for creating slider in your application. 
 
 ## Getting started
 
+- [Demo](#demo)
 - [Installation](#installation)
 - [Supported versions](#supported-versions)
 - [Usage](#usage)
@@ -15,6 +16,10 @@ A React Native based component for creating slider in your application.
 - [Changelog](#changelog)
 - [License](#license)
 - [Keywords](#keywords)
+
+## Demo
+
+[![](IntroductionSlider.png)](https://github.com/weblineindia/React-Native-Introduction-Slider/blob/master/IntroductionSlider.png)
 
 ## Installation
 
@@ -45,6 +50,8 @@ navigateIntroduction() {
     // Pass all props here... 
       extraData={{
         sourceType: 'URL',
+        timeDuration: 3000,
+        isAutoScroll: true,
         navigateTo: 'SelectionScreen',
         defaultTint: 'gray',
         selectedTint: 'black',
@@ -83,6 +90,8 @@ onSkipTapped={() =>
 | selectedTint         | `string` | no           | Selected tint color for page-control                                          |
 | buttonStyle          | `object` | no           | Style for Skip and Continue text                                              |
 | DATA                 | `object` | yes          | Array of images, it contain assets or url                                     |
+| isAutoScroll         | `boolean`| no           | default true                                                                  |
+| timeDuration         | `number` | no           | default 5 sec, For better result use max 3 sec                                |
 
 ## Methods
 

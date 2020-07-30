@@ -11,7 +11,7 @@ Our Github URL : https://github.com/weblineindia
 /* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
 import {
-  View, TouchableOpacity, FlatList, ImageBackground, Text, StatusBar,
+  View, TouchableOpacity, FlatList, ImageBackground, Text, StatusBar, Alert,
 } from 'react-native';
 import styleSheet1 from './styles';
 
@@ -29,6 +29,9 @@ type IState = {
   pageIndex: Number,
   isFromPageControl: Boolean,
 };
+
+let timeInterval;
+var animaInterval = null;
 
 export default class AppIntro extends React.Component<IProps, IState> {
   constructor(props) {
@@ -51,10 +54,63 @@ export default class AppIntro extends React.Component<IProps, IState> {
         textAlign: 'right',
       };
     }
-
-    // console.log('--props--', this.props.extraData.defaultTint);
-    // if (this.)
+    if (this.props.extraData.isAutoScroll === true) {
+      if(this.props.extraData.timeDuration === undefined){
+        timeInterval = 3000;
+      } else if (this.props.extraData.timeDuration <= 2000){
+        timeInterval = 3000;
+      } else {
+        timeInterval = this.props.extraData.timeDuration;
+      }
+      this.setIntervalToScroll();
+    } else {
+      clearInterval(animaInterval);
+    }
   }
+
+  setIntervalToScroll() {
+
+
+    // To set time interval for jump to next page
+
+    animaInterval = setInterval(
+      function () {
+        if (this.props.extraData.isAutoScroll === true) {
+          const { pageIndex } = this.state;
+          let nextIndex = 0;
+
+          if (pageIndex < this.props.extraData.DATA.length - 1) {
+            nextIndex = pageIndex + 1;
+          }
+
+          this.setState({ pageIndex: nextIndex }, () => {
+            if (nextIndex === (this.props.extraData.DATA.length - 1)){
+              this.scrollToIndex(nextIndex, nextIndex === 0 ? false : true);
+              clearInterval(animaInterval);
+            } else {
+              this.scrollToIndex(nextIndex, nextIndex === 0 ? false : true);
+            }
+          });
+        } else {
+          clearInterval(animaInterval);
+        }
+      }.bind(this),
+      timeInterval,
+    );
+  }
+
+  /**
+   * Method for verifying list refrence exists or not
+   * Apply animation when move to next page or index with timeout
+   *
+   * @param {*} index
+   * @param {*} animated
+   */
+
+  scrollToIndex = (index, animated) => {
+    this.ref_flatList && this.ref_flatList.scrollToIndex({ index, animated });
+    this.flatList_Ref && this.flatList_Ref.scrollToIndex({ index, animated });
+  };
 
   onScrollEnd(e) {
     const contentOffset = e.nativeEvent.contentOffset;
@@ -98,6 +154,7 @@ export default class AppIntro extends React.Component<IProps, IState> {
     if (this.props.onSkipTapped) {
       this.props.onSkipTapped(this.state.index);
     }
+    clearInterval(animaInterval);
     this.props.navigation.navigate('SelectionScreen');
   }
 
