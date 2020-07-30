@@ -1,5 +1,5 @@
 {
-  "name": "@weblineindia/rn-weblineindia-intro-slider",
+  "name": "rn-weblineindia-intro-slider",
   "title": "React Native Intro Slider",
   "version": "1.0.1",
   "description": "A ReactNative component for introduction slider in your app.",
@@ -40,8 +40,5 @@
   "devDependencies": {
     "react": "^16.9.0",
     "react-native": "^0.61.5"
-  },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
   }
 }
