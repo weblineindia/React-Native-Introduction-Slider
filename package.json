@@ -1,7 +1,7 @@
 {
   "name": "rn-weblineindia-intro-slider",
   "title": "React Native Intro Slider",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A ReactNative component for introduction slider in your app.",
   "main": "index.js",
   "files": [
@@ -9,14 +9,15 @@
     "android",
     "index.js",
     "ios",
-    "rn-weblineindia-intro-slider.podspec"
+    "rn-weblineindia-intro-slider.podspec",
+    "styles.js"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/weblineindia/React-Native-Introduction-Slider.git",
+    "url": "git+https://github.com/weblineindia/React-Native-Introduction-Slider.git",
     "baseUrl": "https://github.com/weblineindia/React-Native-Introduction-Slider"
   },
   "keywords": [
@@ -26,19 +27,19 @@
     "introduction-slider",
     "react-native"
   ],
-  "author": {
-    "name": "Weblineindia"
-  },
+  "author": "Weblineindia",
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "homepage": "https://www.weblineindia.com/software-development-resources.html",
-  "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.60.0-rc.0 <1.0.x"
+    "react": "^17.0.2",
+    "react-native": ">=0.66.4-rc.0 <1.0.x"
   },
   "devDependencies": {
-    "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react": "^17.0.2",
+    "react-native": "^0.66.4"
+  },
+  "bugs": {
+    "url": "https://github.com/weblineindia/React-Native-Introduction-Slider/issues"
   }
 }

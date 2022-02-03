@@ -27,14 +27,42 @@ A React Native based component for creating slider in your application.
 
 ## Supported versions
 
-We have tested this component in ReactNative 0.60 - 0.62.5. You can still use it in other versions.
+We have tested this component in ReactNative 0.60 - 0.66.4. You can still use it in other versions.
 
 ## Usage
 
-To use it, register Intro-Slider Component to the navigation stack
+Create a new component file and regiser AppIntro component with props data
 
 ```javascript
-import IntroductionSlider from 'rn-weblineindia-intro-slider';
+import AppIntro from 'rn-weblineindia-intro-slider';
+
+const propData = {
+    sourceType: 'URL',
+    navigateTo: 'SelectionScreen',
+    defaultTint: 'gray',
+    selectedTint: 'black',
+    buttonStyle: {
+      fontSize: 15,
+      color: 'white',
+      textAlign: 'right',
+    },
+    DATA: ["https://picsum.photos/200/501", "https://picsum.photos/300/502"],
+  };
+
+export default const IntroductionSlider = ({ navigation }) => {
+    return <AppIntro 
+      extraData={propData}
+      navigation={navigation}
+      onSkipTapped={() => { navigation.goBack() }}
+    />
+  }
+ 
+```
+
+Register IntroductionSlider Component to the navigation stack
+
+```javascript
+import IntroductionSlider from '../IntroductionSlider';
 
 <Stack.Screen 
     name="IntroductionSlider" 
@@ -42,30 +70,10 @@ import IntroductionSlider from 'rn-weblineindia-intro-slider';
 />
 ```
 
-Here is a sample screen in which you can implement the Intro-Slider Component
+Here is a sample screen through which you can navigate to the IntroductionSlider Component
 
 ```javascript
-navigateIntroduction() {
-    this.props.navigation.navigate('IntroductionSlider', {
-    // Pass all props here... 
-      extraData={{
-        sourceType: 'URL',
-        timeDuration: 3000,
-        isAutoScroll: true,
-        navigateTo: 'SelectionScreen',
-        defaultTint: 'gray',
-        selectedTint: 'black',
-        buttonStyle: {
-          fontSize: 15,
-          color: 'white',
-          textAlign: 'right',
-        },
-        DATA: URLDATA,
-      }}
-    });
-  }
-
-<TouchableOpacity onPress={()=> this.navigateIntroduction()}>
+<TouchableOpacity onPress={()=> navigation.navigate('IntroductionSlider')}>
     // Your code here
 </TouchableOpacity>
 ```
